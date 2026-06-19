@@ -138,3 +138,6 @@ Update one router:
 ```bash
 ./mikctl update -r mt24_gippo03
 ```
+## License
+
+MIT License. See LICENSE file for details.
