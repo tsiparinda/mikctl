@@ -1,0 +1,4 @@
+      1 ssh_user: admin
+      2 password_id: 0
+      3 workers: 20
+      4 db_path: ./db/mikrotik.db

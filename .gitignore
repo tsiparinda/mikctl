@@ -1,0 +1,27 @@
+# build
+mikctl
+*.exe
+
+# database
+*.db
+*.sqlite
+*.sqlite3
+
+# config
+config.yaml
+*.local.yaml
+.env
+
+# backups
+backup/
+
+# IDE
+.vscode/
+.idea/
+
+#others
+docs/
+import/
+scripts/
+
+
