@@ -11,7 +11,7 @@ import (
 var RootCmd = &cobra.Command{
 	Use:     "mikctl",
 	Short:   "MikroTik management utility",
-	Version: "1.1.1",
+	Version: "1.1.2",
 	Long: `mikctl is a utility for managing MikroTik routers.
 
 			Features:

@@ -28,9 +28,11 @@ Configuration file:
 ~/.config/mikctl/config.yaml
 ```
 
-## Build
+## Installation
 
 ```bash
+git clone https://github.com/tsiparinda/mikctl.git
+cd mikctl
 go build -o mikctl ./src
 ```
 
