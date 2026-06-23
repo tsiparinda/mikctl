@@ -8,7 +8,10 @@ import (
 )
 
 func SaveRouterInfo(router *models.Router) error {
-
+	if router.Name == "MikroTik" {
+		fmt.Printf("Found new device %s, skipped\n", router.Name)
+		return nil
+	}
 	router.Serial = strings.TrimSpace(router.Serial)
 
 	var serialValue any
