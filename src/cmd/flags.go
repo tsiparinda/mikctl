@@ -8,10 +8,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Version = "dev"
+
 var RootCmd = &cobra.Command{
-	Use:     "mikctl",
-	Short:   "MikroTik management utility",
-	Version: "1.1.2",
+	Use:   "mikctl",
+	Short: "MikroTik management utility",
+	// Version: "1.1.2",
 	Long: `mikctl is a utility for managing MikroTik routers.
 
 			Features:
