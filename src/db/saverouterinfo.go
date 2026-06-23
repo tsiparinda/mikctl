@@ -17,7 +17,9 @@ func SaveRouterInfo(router *models.Router) error {
 	} else {
 		serialValue = router.Serial
 	}
+
 	config.Verbosef("DEVICE model=%q serial=%q version=%q\n", router.Model, router.Serial, router.ROSVersion)
+
 	if serialValue != nil {
 		_, err := DB.Exec(`
 		INSERT INTO devices(
@@ -51,6 +53,7 @@ func SaveRouterInfo(router *models.Router) error {
 		}
 
 	}
+
 	var parentID any
 	var deviceID any
 	if router.ParentID == 0 {
@@ -63,13 +66,9 @@ func SaveRouterInfo(router *models.Router) error {
 	} else {
 		deviceID = router.DeviceID
 	}
-	config.Verbosef(
-		"DEVICE device_id=%q name=%q fMain=%q parent_router_id=%q\n",
-		deviceID,
-		strings.TrimSpace(router.Name),
-		router.Main,
-		parentID,
-	)
+
+	config.Verbosef("DEVICE device_id=%q name=%q fMain=%q parent_router_id=%q\n", deviceID, strings.TrimSpace(router.Name), router.Main, parentID)
+
 	_, err := DB.Exec(`
 		INSERT INTO routers(
 			device_id,
@@ -86,7 +85,8 @@ func SaveRouterInfo(router *models.Router) error {
 			name = excluded.name,
 			fMain = excluded.fMain,
 			parent_router_id = excluded.parent_router_id,
-			last_seen_at = CURRENT_TIMESTAMP
+			last_seen_at = CURRENT_TIMESTAMP,
+			device_id=COALESCE(excluded.device_id, routers.device_id)
 		`,
 		deviceID,
 		strings.TrimSpace(router.Name),
